@@ -10,6 +10,10 @@ export class PhotoShowComponent implements OnInit {
   photoUrl: string;
 
   constructor(private photoService: PhotosService) {
+    this.fetchPhoto();
+  }
+
+  private fetchPhoto() {
     this.photoService.getPhoto().subscribe((response) => {
       this.photoUrl = response.urls.regular;
     });
@@ -18,4 +22,7 @@ export class PhotoShowComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick() {
+    this.fetchPhoto();
+  }
 }
